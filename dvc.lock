@@ -1,0 +1,83 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python main.py
+    deps:
+    - path: config.yaml
+      hash: md5
+      md5: 4a933c90eb84781e679a34aba5b1277e
+      size: 1320
+    - path: src/customer_churn_mlops/components/data_ingestion.py
+      hash: md5
+      md5: b9feafef2304c57abf743c15d48be686
+      size: 1867
+    outs:
+    - path: artifacts/data_ingestion
+      hash: md5
+      md5: 69fff7cdc046b938a40208c496da9a2f.dir
+      size: 2131805
+      nfiles: 4
+  data_validation:
+    cmd: python main.py
+    deps:
+    - path: schema.yaml
+      hash: md5
+      md5: bbde2c0d6239d2258a27970ef7327644
+      size: 522
+    - path: src/customer_churn_mlops/components/data_validation.py
+      hash: md5
+      md5: 5af94ae868f9be3f3a10e4045b9fe1de
+      size: 1236
+    outs:
+    - path: artifacts/data_validation
+      hash: md5
+      md5: 7d522d56ecf8d6bcdea9f75f1c28196d.dir
+      size: 23
+      nfiles: 1
+  data_transformation:
+    cmd: python main.py
+    deps:
+    - path: config.yaml
+      hash: md5
+      md5: 4a933c90eb84781e679a34aba5b1277e
+      size: 1320
+    - path: src/customer_churn_mlops/components/data_transformation.py
+      hash: md5
+      md5: 16329e0d5b41a883ab3f10318a3ca0d9
+      size: 5574
+    outs:
+    - path: artifacts/data_transformation
+      hash: md5
+      md5: 0091767c4fa16e83d6e3d22b34db073c.dir
+      size: 2600779
+      nfiles: 3
+  model_training:
+    cmd: python main.py
+    deps:
+    - path: params.yaml
+      hash: md5
+      md5: e6c370351a02c885157b4167045b5402
+      size: 278
+    - path: src/customer_churn_mlops/components/model_trainer.py
+      hash: md5
+      md5: c5d1666a7ff990717050e0468ed556c2
+      size: 4749
+    outs:
+    - path: artifacts/model_trainer
+      hash: md5
+      md5: 092182d0fd50d7597baa43d48d411873.dir
+      size: 1199
+      nfiles: 1
+  model_evaluation:
+    cmd: python main.py
+    deps:
+    - path: src/customer_churn_mlops/components/model_evaluation.py
+      hash: md5
+      md5: fffded180a61df9285b2f4d7cac656d4
+      size: 2655
+    outs:
+    - path: artifacts/model_evaluation
+      hash: md5
+      md5: 69bc450d8dba31b1c9fc7afd48f11e37.dir
+      size: 185
+      nfiles: 1

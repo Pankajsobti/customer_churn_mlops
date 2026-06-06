@@ -1,0 +1,40 @@
+stages:
+
+  data_ingestion:
+    cmd: python main.py
+    deps:
+      - src/customer_churn_mlops/components/data_ingestion.py
+      - config.yaml
+    outs:
+      - artifacts/data_ingestion
+
+  data_validation:
+    cmd: python main.py
+    deps:
+      - src/customer_churn_mlops/components/data_validation.py
+      - schema.yaml
+    outs:
+      - artifacts/data_validation
+
+  data_transformation:
+    cmd: python main.py
+    deps:
+      - src/customer_churn_mlops/components/data_transformation.py
+      - config.yaml
+    outs:
+      - artifacts/data_transformation
+
+  model_training:
+    cmd: python main.py
+    deps:
+      - src/customer_churn_mlops/components/model_trainer.py
+      - params.yaml
+    outs:
+      - artifacts/model_trainer
+
+  model_evaluation:
+    cmd: python main.py
+    deps:
+      - src/customer_churn_mlops/components/model_evaluation.py
+    outs:
+      - artifacts/model_evaluation

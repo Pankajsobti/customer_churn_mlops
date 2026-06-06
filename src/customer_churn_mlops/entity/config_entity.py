@@ -4,15 +4,17 @@ from dataclasses import dataclass
 @dataclass
 class DataIngestionConfig:
     root_dir: str
-    source_url: str
+    dataset_name: str
     local_data_file: str
     unzip_dir: str
+    train_data_path: str
+    test_data_path: str
 
 
 @dataclass
 class DataValidationConfig:
     root_dir: str
-    STATUS_FILE: str
+    status_file: str
     unzip_data_dir: str
     all_schema: dict
 
@@ -20,16 +22,26 @@ class DataValidationConfig:
 @dataclass
 class DataTransformationConfig:
     root_dir: str
-    data_path: str
+
+    input_train_data_path: str
+    input_test_data_path: str
+
+    train_data_path: str
+    test_data_path: str
+
     preprocessor_path: str
 
 
 @dataclass
 class ModelTrainerConfig:
     root_dir: str
+
     train_data_path: str
     test_data_path: str
-    model_name: str
+
+    model_path: str
+
+    expected_score: float
 
 
 @dataclass
