@@ -60,22 +60,27 @@ class ModelTrainer:
 
             models = {
 
-                "Logistic Regression":
-                    LogisticRegression(
-                        max_iter=1000
-                    ),
+            "RandomForest":
 
-                "Random Forest":
-                    RandomForestClassifier(
-                        random_state=42
-                    ),
+            RandomForestClassifier(
 
-                "XGBoost":
-                    XGBClassifier(
-                        eval_metric="logloss",
-                        random_state=42
-                    )
-            }
+                **self.config.params.RandomForest
+            ),
+
+            "XGBoost":
+
+            XGBClassifier(
+
+                **self.config.params.XGBoost
+            ),
+
+            "LogisticRegression":
+
+            LogisticRegression(
+
+                **self.config.params.LogisticRegression
+            )
+        }
 
             model_report = evaluate_models(
                 X_train,

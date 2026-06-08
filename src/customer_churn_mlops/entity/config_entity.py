@@ -43,6 +43,8 @@ class ModelTrainerConfig:
 
     expected_score: float
 
+    params: dict
+
 
 @dataclass
 class ModelEvaluationConfig:

@@ -56,16 +56,16 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: e6c370351a02c885157b4167045b5402
-      size: 278
+      md5: 8bd579d23efda2fbd0e5ea007930e907
+      size: 308
     - path: src/customer_churn_mlops/components/model_trainer.py
       hash: md5
-      md5: c5d1666a7ff990717050e0468ed556c2
-      size: 4749
+      md5: 681c48c9c794467c9d15e0198242021d
+      size: 4680
     outs:
     - path: artifacts/model_trainer
       hash: md5
-      md5: 092182d0fd50d7597baa43d48d411873.dir
+      md5: 2df1398df47620d3ec8d3bfa5c320c79.dir
       size: 1199
       nfiles: 1
   model_evaluation:
